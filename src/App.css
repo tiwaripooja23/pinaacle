@@ -1,0 +1,79 @@
+
+/* .wrapper {
+  max-width: 700px;
+  margin: 0 auto;
+} */
+.form-control:focus {
+  box-shadow: unset;
+}
+
+.commonbackground{
+  background-color: #f0f0f0; /* Set your background color */
+  background-image: url('../src/credit-cards.jpg'); /* Set your background image */
+  background-repeat: no-repeat; /* Prevent the background image from repeating */
+  background-size: cover;
+  height: 200vh;
+}
+
+
+.font{
+  color: white !important;
+  font-weight: 600;
+}
+
+.bckground{
+  background-color: #0000007a !important
+}
+
+/* .customerList{
+  width: 500vh;
+  flex-grow: initial;
+  display: flex;
+} */
+
+/* .gap{
+  width: 25vh !important;
+}
+
+.action{
+  width: 49vh !important;
+}
+
+.container{
+    margin-left: 0px !important;
+} */
+
+label{
+  color: white;
+  font-weight: bold;
+}
+.disable {
+  background-color: #cccc;
+}
+.disable:focus {
+  background-color: #cccc;
+}
+h1,h2,h3,h4,h5,h6{
+  color: white;
+}
+.createCustomer {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.customerList table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+.customerList {
+  overflow-x: auto;
+}
+
+.detail {
+  background: #c4bfbf69;
+  border-radius: 10px;
+  width: 70%;
+  margin: 0 auto;
+  padding: 30px;
+}
