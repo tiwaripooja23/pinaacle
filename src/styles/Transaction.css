@@ -1,0 +1,91 @@
+.transaction-filter-container{
+    display:flex;
+    justify-content: center;
+}
+
+.transaction-container {
+    min-width: 730px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #274049a3;
+  }
+
+  .filter-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 310px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #274049a3;
+    margin-right: 40px;
+  }
+  
+  .transaction-heading {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+  }
+  
+  .transaction-list {
+    list-style: none;
+    padding: 0;
+    color: wheat;
+  }
+  
+  .transaction-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .transaction-item>div {
+    width: calc(100% / 3);
+  }
+  
+  .transaction-description {
+    flex: 1;
+  }
+  
+  .transaction-positive-amount {
+    color: #38d738;
+    text-align: right;
+  }
+  
+  .transaction-negative-amount {
+    color: red;
+    text-align: right;
+  }
+  
+
+  .filter-button{
+    background: #c4bfbf2e;
+    color: white;
+    border-radius: 20px;
+    border: 1px solid white;
+    margin: 10px;
+    padding: 5px 25px ;
+  }
+
+  .filter-buttons{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .date-filter{
+    background: #c4bfbf2e;
+    color: white;
+    border-radius: 20px;
+    border: 1px solid white;
+    padding: 5px 10px ;
+  }
+
+  .date-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+  }

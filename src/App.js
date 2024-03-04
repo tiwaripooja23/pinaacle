@@ -7,6 +7,7 @@ import EditCustomer from "./components/EditCustomer";
 import CustomerList from "./components/CustomerList";
 import Login from './components/login/Login';
 import ViewDetail from "./components/detail";
+import Transaction from "./components/Transaction";
 
 function App() {
   const storedData = localStorage.getItem('storedEmail');
@@ -49,6 +50,7 @@ function App() {
             <Route exact path="/edit-customer/:id" element={<EditCustomer />} />
             <Route exact path="/customer-list" element={<CustomerList />} />
             <Route exact path="/detail/:id" element={<ViewDetail />} />
+            <Route exact path="/transactions" element={<Transaction />} />
           </Routes>
         </div>
       </div>
