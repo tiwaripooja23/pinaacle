@@ -24,15 +24,15 @@ function EditCustomer() {
   const onUpdate = (e) => {
     e.preventDefault();
     axios
-      .put("http://localhost:4000/customers/update-customer/" + params.id, {
-        name: userForm.name,
-        email: userForm.email,
-        ssn: userForm.ssn,
-        balance: userForm.balance
+      .put("http://localhost:4000/customers/create-deposit/" + params.id, {
+        accountNumber: userForm.accountNumber,
+        mode: userForm.mode,
+        amount: userForm.amount,
+        date: userForm.date
       })
       .then((res) => {
         console.log({ status: res.status });
-        navigate("/customer-list");
+        navigate("/transaction-list");
       });
   };
 
