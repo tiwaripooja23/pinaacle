@@ -1,33 +1,38 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react"; // Import React, useEffect and useState hooks
+import axios from "axios"; // Import axios for making HTTP requests
+import { useParams, useNavigate } from "react-router-dom"; // Import hooks for routing
 
 function CreateCustomer() {
+  // State to hold form data
   const [userForm, setUserForm] = useState({
     name: "",
     email: "",
     ssn: "",
     accountNumber: "",
     balance: "",
+    pwds: "", // Added password to the form state but not used in submission
   });
 
+  // Handler for form inputs to update the state
   const inputsHandler = (e) => {
     setUserForm((prevNext) => ({
       ...prevNext,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value, // Update the value of the input field that was changed
     }));
   };
 
-  let params = useParams();
-  let navigate = useNavigate();
+  let params = useParams(); // Hook to access the params of the current route
+  let navigate = useNavigate(); // Hook to programmatically navigate
 
+  // Handler for form submission
   const onSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default form submission behavior
     axios
-      .post("http://localhost:4000/customers/create-customer", userForm)
+      .post("http://localhost:4000/customers/create-customer", userForm) // Post form data to server
       .then((res) => {
-        console.log(res.data);
+        console.log(res.data); // Log the response from the server
 
+        // Reset form state after submission
         setUserForm({
           name: "",
           email: "",
@@ -36,16 +41,19 @@ function CreateCustomer() {
           balance: "",
           pwds: "",
         });
-        navigate("/customer-list");
+        navigate("/customer-list"); // Navigate to customer list page after submission
       });
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    // Effect hook to perform side effects, empty dependency array means it runs once on mount
+  }, []);
 
   return (
     <div className="createCustomer">
       <div className="form-wrapper">
         <form onSubmit={onSubmit}>
+          {/* Form fields for customer information with onChange to update state */}
           <div className="mb-3">
             <label className="form-label font">Name</label>
             <input
@@ -58,6 +66,7 @@ function CreateCustomer() {
               onChange={inputsHandler}
             />
           </div>
+          {/* Repeat for other fields */}
           <div className="mb-3">
             <label className="form-label font">Email</label>
             <input
@@ -88,8 +97,8 @@ function CreateCustomer() {
               type="text"
               className="form-control"
               name="accountNumber"
-              id="accountNumber"
               required={true}
+              id="accountNumber"
               value={userForm.accountNumber}
               onChange={inputsHandler}
             />
@@ -97,7 +106,7 @@ function CreateCustomer() {
           <div className="mb-3">
             <label className="form-label font">Password</label>
             <input
-              type="text"
+              type="password" // Changed type to password to hide input
               className="form-control"
               name="pwds"
               id="pwds"
@@ -127,4 +136,4 @@ function CreateCustomer() {
   );
 }
 
-export default CreateCustomer;
+export default CreateCustomer; // Export the component for use in other parts of the app
