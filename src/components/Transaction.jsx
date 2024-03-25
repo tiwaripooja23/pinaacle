@@ -24,229 +24,236 @@ function Transaction() {
     axios
       .get("http://localhost:4000/customers/get-transactions/" + params.id)
       .then((res) => {
-        setData(res.data.data);
+        const transactions = res.data.data;
+        const updatedData = transactions.map(entry => {
+          return {
+              ...entry,
+              date: new Date(entry.date)
+          };
+      });
+        setData(updatedData);
       })
       .catch(() => {
         setData([
           {
             id: 1,
-            description: "Interac Transfer",
+            note: "Interac Transfer",
             amount: -120.25,
             date: new Date("2024-02-03T10:30:00"),
           },
           {
             id: 2,
-            description: "Payment Amazon",
+            note: "Payment Amazon",
             amount: 100.0,
             date: new Date("2024-03-03T10:30:00"),
           },
           {
             id: 3,
-            description: "Presto Recharge",
+            note: "Presto Recharge",
             amount: -30.5,
             date: new Date("2024-05-06T10:30:00"),
           },
           {
             id: 4,
-            description: "Interac Transfer",
+            note: "Interac Transfer",
             amount: -50.25,
             date: new Date("2024-07-03T10:30:00"),
           },
           {
             id: 5,
-            description: "Payment Amazon",
+            note: "Payment Amazon",
             amount: 10.0,
             date: new Date("2024-08-02T10:30:00"),
           },
           {
             id: 6,
-            description: "Presto Recharge",
+            note: "Presto Recharge",
             amount: -30.5,
             date: new Date("2024-09-05T10:30:00"),
           },
           {
             id: 7,
-            description: "Shopping at Mall",
+            note: "Shopping at Mall",
             amount: -45.75,
             date: new Date("2024-10-10T15:45:00"),
           },
           {
             id: 8,
-            description: "Gas Station",
+            note: "Gas Station",
             amount: -25.3,
             date: new Date("2024-11-12T08:30:00"),
           },
           {
             id: 9,
-            description: "Grocery Store",
+            note: "Grocery Store",
             amount: -70.2,
             date: new Date("2024-12-20T14:00:00"),
           },
           {
             id: 10,
-            description: "Salary Deposit",
+            note: "Salary Deposit",
             amount: 200.0,
             date: new Date("2022-01-05T12:00:00"),
           },
           {
             id: 11,
-            description: "Electric Bill",
+            note: "Electric Bill",
             amount: -80.5,
             date: new Date("2022-02-08T18:00:00"),
           },
           {
             id: 12,
-            description: "Interac Transfer",
+            note: "Interac Transfer",
             amount: -90.75,
             date: new Date("2022-03-15T10:30:00"),
           },
           {
             id: 13,
-            description: "Payment Amazon",
+            note: "Payment Amazon",
             amount: 50.0,
             date: new Date("2022-04-18T09:15:00"),
           },
           {
             id: 14,
-            description: "Presto Recharge",
+            note: "Presto Recharge",
             amount: -25.0,
             date: new Date("2022-05-20T13:30:00"),
           },
           {
             id: 15,
-            description: "Dinner with Friends",
+            note: "Dinner with Friends",
             amount: -40.0,
             date: new Date("2022-06-25T20:00:00"),
           },
           {
             id: 16,
-            description: "Interac Transfer",
+            note: "Interac Transfer",
             amount: -60.2,
             date: new Date("2022-07-30T14:45:00"),
           },
           {
             id: 17,
-            description: "Online Subscription",
+            note: "Online Subscription",
             amount: -15.99,
             date: new Date("2022-08-05T11:30:00"),
           },
           {
             id: 18,
-            description: "Payment Amazon",
+            note: "Payment Amazon",
             amount: 25.5,
             date: new Date("2022-09-10T12:15:00"),
           },
           {
             id: 19,
-            description: "Presto Recharge",
+            note: "Presto Recharge",
             amount: -35.75,
             date: new Date("2022-10-18T16:30:00"),
           },
           {
             id: 20,
-            description: "Holiday Expenses",
+            note: "Holiday Expenses",
             amount: -120.0,
             date: new Date("2022-11-22T09:00:00"),
           },
           {
             id: 21,
-            description: "Interac Transfer",
+            note: "Interac Transfer",
             amount: -70.5,
             date: new Date("2022-12-28T10:30:00"),
           },
           {
             id: 22,
-            description: "Shopping Spree",
+            note: "Shopping Spree",
             amount: -200.75,
             date: new Date("2023-01-15T14:00:00"),
           },
           {
             id: 23,
-            description: "Rent Payment",
+            note: "Rent Payment",
             amount: -80.0,
             date: new Date("2023-02-20T16:30:00"),
           },
           {
             id: 24,
-            description: "Payment Amazon",
+            note: "Payment Amazon",
             amount: 75.0,
             date: new Date("2023-03-25T11:45:00"),
           },
           {
             id: 25,
-            description: "Presto Recharge",
+            note: "Presto Recharge",
             amount: -28.5,
             date: new Date("2023-04-30T10:30:00"),
           },
           {
             id: 26,
-            description: "Interac Transfer",
+            note: "Interac Transfer",
             amount: -50.0,
             date: new Date("2023-05-05T12:00:00"),
           },
           {
             id: 27,
-            description: "Coffee Shop",
+            note: "Coffee Shop",
             amount: -8.25,
             date: new Date("2023-06-10T08:15:00"),
           },
           {
             id: 28,
-            description: "Utility Bill",
+            note: "Utility Bill",
             amount: -100.5,
             date: new Date("2023-07-15T15:30:00"),
           },
           {
             id: 29,
-            description: "Payment Amazon",
+            note: "Payment Amazon",
             amount: 30.0,
             date: new Date("2023-08-20T09:45:00"),
           },
           {
             id: 30,
-            description: "Presto Recharge",
+            note: "Presto Recharge",
             amount: -25.75,
             date: new Date("2023-09-25T10:30:00"),
           },
           {
             id: 31,
-            description: "Interac Transfer",
+            note: "Interac Transfer",
             amount: -40.2,
             date: new Date("2023-10-30T12:00:00"),
           },
           {
             id: 32,
-            description: "Movie Night",
+            note: "Movie Night",
             amount: -15.0,
             date: new Date("2023-11-05T20:30:00"),
           },
           {
             id: 33,
-            description: "Payment Amazon",
+            note: "Payment Amazon",
             amount: 20.5,
             date: new Date("2023-12-10T11:15:00"),
           },
           {
             id: 34,
-            description: "Presto Recharge",
+            note: "Presto Recharge",
             amount: -22.75,
             date: new Date("2027-01-15T14:45:00"),
           },
           {
             id: 35,
-            description: "Interac Transfer",
+            note: "Interac Transfer",
             amount: -75.3,
             date: new Date("2027-02-20T10:30:00"),
           },
           {
             id: 36,
-            description: "Online Shopping",
+            note: "Online Shopping",
             amount: -90.0,
             date: new Date("2027-03-25T16:00:00"),
           },
           {
             id: 37,
-            description: "Payment Amazon",
+            note: "Payment Amazon",
             amount: 15.25,
             date: new Date("2027-04-30T09:30:00"),
           },
@@ -472,7 +479,7 @@ function Transaction() {
                   <li key={transaction.id} className="transaction-item">
                     <div>
                       <span className="transaction-description">
-                        {transaction.description}
+                        {transaction.note}
                       </span>
                     </div>
                     <div>
@@ -496,7 +503,7 @@ function Transaction() {
                   <li key={transaction.id} className="transaction-item">
                     <div>
                       <span className="transaction-description">
-                        {transaction.description}
+                        {transaction.note}
                       </span>
                     </div>
                     <div>

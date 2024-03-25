@@ -143,5 +143,24 @@
     color:white;
   }
   
+  .toggle-btns {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    border-radius: 20px; /* Set border radius for the container */
+    overflow: hidden; /* Ensure children elements are clipped to match the border radius */
+}
+
+.toggle-btn {
+    padding: 10px 20px;
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.toggle-btn.active {
+    background-color: #73e6ad78;;
+    color: white;
+}
+
   
   

@@ -4,12 +4,21 @@ import { useParams, useNavigate } from "react-router-dom";
 
 function CreateDeposit() {
   const [userForm, setUserForm] = useState({
-    name: "",
+    note: "",
     amount: "",
-    date: "",
     accountNumber: "",
-    balance: "",
+    password: "",
   });
+
+  const [showDeposit, setShowDeposit] = useState(true); // State to manage deposit/withdrawal toggle
+
+    const toggleDeposit = () => {
+        setShowDeposit(true);
+    };
+
+    const toggleWithdraw = () => {
+        setShowDeposit(false);
+    };
 
   const inputsHandler = (e) => {
     setUserForm((prevNext) => ({
@@ -24,18 +33,10 @@ function CreateDeposit() {
   const onSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:4000/customers/create-customer", userForm)
+      .post("http://localhost:4000/customers/deposit/" + params.id, userForm)
       .then((res) => {
         console.log(res.data);
-
-        setUserForm({
-          name: "",
-          amount: "",
-          date: "",
-          accountNumber: "",
-          balance: "",
-        });
-        navigate("/customer-list");
+        navigate("/transactions");
       });
   };
 
@@ -46,29 +47,23 @@ function CreateDeposit() {
       <div className="form-wrapper">
         <form onSubmit={onSubmit}>
           <div className="mb-3">
-            <label className="form-label font">Type</label>
+
+            <div className="toggle-btns">
+                <div className={showDeposit ? 'toggle-btn active' : 'toggle-btn'} onClick={toggleDeposit}>Send Money</div>
+                <div className={!showDeposit ? 'toggle-btn active' : 'toggle-btn'} onClick={toggleWithdraw}>Request Money</div>
+            </div>
+            <label className="form-label font">Note</label>
             <input
               type="text"
               className="form-control"
-              name="name"
+              name="note"
               required={true}
-              id="name"
-              value={userForm.name}
+              id="note"
+              value={userForm.note}
               onChange={inputsHandler}
             />
           </div>
-          <div className="mb-3">
-            <label className="form-label font">Date</label>
-            <input
-              type="dateField"
-              className="form-control"
-              name="date"
-              required={true}
-              id="date"
-              value={userForm.email}
-              onChange={inputsHandler}
-            />
-          </div>
+          
           <div className="mb-3">
             <label className="form-label font">Amount</label>
             <input
@@ -77,14 +72,14 @@ function CreateDeposit() {
               name="amount"
               required={true}
               id="amount"
-              value={userForm.ssn}
+              value={userForm.amount}
               onChange={inputsHandler}
             />
           </div>
           <div className="mb-3">
             <label className="form-label font">Account Number</label>
             <input
-              type="text"
+              type="number"
               className="form-control"
               name="accountNumber"
               id="accountNumber"
@@ -93,18 +88,8 @@ function CreateDeposit() {
               onChange={inputsHandler}
             />
           </div>
-          <div className="mb-3">
-            <label className="form-label font">Balance</label>
-            <input
-              type="text"
-              className="form-control"
-              name="balance"
-              id="balance"
-              value={userForm.balance}
-              onChange={inputsHandler}
-            />
-          </div>
-          <div className="mb-3">
+          
+          <div className="mb-3" style={{textAlign:"center"}}>
             <button type="submit" className="btn btn-primary">
               Submit
             </button>

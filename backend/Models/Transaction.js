@@ -2,26 +2,29 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
   let transactionSchema = new Schema({
-    accountNUmver: {
+    accountNumber: {
       type: String
-    },
-    amount: {
-      type: Number
-    },
-    mode: {
-      type: Number
     },
     balance: {
       type: Number
     },
-    date: {
-      type: Date
-    },
     customerId: {
       type: Number
-    }
+    },
+    transactions : [{
+      amount: {
+        type: Number
+      },
+      note: {
+        type: String
+      },
+      date: {
+        type: Date
+      }
+    }]
+   
   }, {
       collection: 'transaction'
     })
 
-module.exports = mongoose.model('Customer', transactionSchema)
+module.exports = mongoose.model('Transaction', transactionSchema)
